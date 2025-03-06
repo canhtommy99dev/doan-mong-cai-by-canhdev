@@ -1,9 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import logo from "../../../assets/logoDoan.png";
 
 export default function GradientBackground() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+
   return (
     <div className="relative flex items-center justify-center h-screen overflow-hidden">
       {/* Animated Background */}
@@ -15,19 +19,37 @@ export default function GradientBackground() {
           backgroundSize: "200% 200%",
         }}
       />
-      <div className="relative md:flex">
-        <img src={logo} width={160} />
-        <div>
+      <div
+        className="relative flex flex-col md:flex-row items-center justify-center p-8 h-screen"
+        ref={ref}
+      >
+        <motion.img
+          src={logo}
+          width={160}
+          alt="Logo"
+          className="m-5"
+          initial={{ opacity: 0, y: -50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        />
+        <div className="text-center md:text-left">
           <motion.h1
-            className="text-4xl font-bold text-white"
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, type: "tween" }}
+            className="text-4xl font-bold text-white px-2"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            Đoàn Thanh niên - Hội LHTN Việt Nam,Thanh Đoàn Móng Cái
+            Đoàn Thanh niên - Hội LHTN Việt Nam, Thanh Đoàn Móng Cái
           </motion.h1>
-          <p className="text-gray-700 mt-4">
-            Chào mừng tháng 3,Tháng thanh niên Việt Nam <br />
-          </p>
+          <motion.p
+            className="text-white mt-4 px-2"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            Tháng Thanh Niên – Tuổi trẻ tiên phong, sáng tạo, cống hiến vì cộng
+            đồng <br />
+          </motion.p>
         </div>
       </div>
     </div>
