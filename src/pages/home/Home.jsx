@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <GradientBackground />
-      <Feature />
+      {/* <Feature /> */}
     </div>
   );
 };
