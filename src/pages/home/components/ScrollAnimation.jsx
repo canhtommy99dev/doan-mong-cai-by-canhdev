@@ -1,49 +1,20 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-
-const sections = ["Scroll", "to", "trigger", "animations!"];
-const colors = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
+// import { useEffect, useState } from "react";
 
 const ScrollAnimation = () => {
-  const [visibleIndex, setVisibleIndex] = useState(-1);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll(".scroll-section");
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
-          setVisibleIndex(index);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div className="flex flex-col overflow-x-hidden h-screen">
-      {sections.map((text, index) => (
-        <div
-          key={index}
-          className="scroll-section flex justify-center items-center h-screen"
-          style={{ background: colors[index] + "33" }}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-20">
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="bg-white p-10 rounded-2xl shadow-lg text-xl font-semibold"
         >
-          <motion.pre
-            initial={{ opacity: 0, x: -100 }}
-            animate={
-              visibleIndex === index
-                ? { opacity: 1, x: 0 }
-                : { opacity: 0, x: -100 }
-            }
-            transition={{ duration: 0.9, ease: [0.17, 0.55, 0.55, 1] }}
-            className="text-6xl font-bold"
-            style={{ color: colors[index] }}
-          >
-            {text}
-          </motion.pre>
-        </div>
+          Section {i + 1}
+        </motion.div>
       ))}
     </div>
   );
