@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
+import {
   CloudArrowUpIcon,
   LockClosedIcon,
   ServerIcon,
@@ -11,25 +17,46 @@ const teamMembers = [
     name: "Nguyễn Thế Vinh",
     role: "Bí thư Thành Đoàn",
     img: "https://mongcai.gov.vn/caches/editor/5292d1bc_vinh.jpeg",
-    info: "Nguyễn Thế Vinh is the leader of the Thành Đoàn, responsible for youth activities and initiatives in the city.",
+    info: "Nguyễn Thế Vinh là trưởng Thành Đoàn, chịu trách nhiệm về các hoạt động và sáng kiến thanh niên trong thành phố.",
+    education_level: "12/12",
+    specialized_qualifications:
+      "Tiến sĩ Triết học, Thạc sĩ - Cử nhân xây dựng Đảng và Chính quyền Nhà nước, Kỹ sư CNTT, Cử nhân Ngôn ngữ Anh, Cử nhân Luật Kinh tế",
+    level_of_political_theory: "Cao cấp",
+    phone_number: "0826.519.555",
+    email: "nguyenthevinh.phd@gmail.com",
   },
   {
     name: "Nguyễn Thế Mười",
     role: "Phó Bí thư kiêm nhiệm Thành Đoàn, Bí thư Đoàn phường Ninh Dương",
     img: "https://mongcai.gov.vn/caches/editor/4151439b_muoi.jpeg",
-    info: "Nguyễn Thế Mười plays a dual role in both city and ward-level youth leadership.",
+    info: "Nguyễn Thế Mười đảm nhận vai trò kép trong lãnh đạo thanh niên cả ở cấp thành phố và cấp phường.",
+    education_level: "12/12",
+    specialized_qualifications: "Thạc sĩ - Cử nhân Quản trị nhân lực",
+    level_of_political_theory: "Trung cấp",
+    phone_number: "0961.662.629",
+    email: "",
   },
   {
     name: "Lê Thị Kiều Anh",
     role: "Ủy viên Ban Thường vụ, Chuyên viên Thành Đoàn",
     img: "https://mongcai.gov.vn/caches/editor/458/458b8d03-153b-4ad8-a8a4-32c00e610e2c.jpg",
     info: "Lê Thị Kiều Anh is an experienced consultant, ensuring the smooth operation of Thành Đoàn projects.",
+    education_level: "12/12",
+    specialized_qualifications: "Cử nhân Triết học",
+    level_of_political_theory: "Trung cấp",
+    phone_number: "0399.140.091",
+    email: "lethikieuanh299@gmail.com",
   },
   {
     name: "Nguyễn Bảo Ngọc",
     role: "Chuyên viên Thành Đoàn",
     img: "https://mongcai.gov.vn/caches/editor/d171af0d_ngoc.jpeg",
     info: "Nguyễn Bảo Ngọc contributes significantly to various Thành Đoàn programs and activities.",
+    education_level: "12/12",
+    specialized_qualifications: "Cử nhân Tài chính - Ngân hàng",
+    level_of_political_theory: "",
+    phone_number: "0367.428.658",
+    email: "",
   },
 ];
 
@@ -165,42 +192,52 @@ const About = () => {
         ))}
       </div>
 
-      <AnimatePresence>
-        {selectedMember && (
+      <Dialog
+        open={!!selectedMember}
+        onClose={() => setSelectedMember(null)}
+        className="relative z-50"
+      >
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedMember(null)}
+            className="bg-white p-6 rounded-2xl shadow-lg max-w-lg text-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
           >
-            <motion.div
-              className="bg-white p-6 rounded-2xl shadow-lg max-w-lg text-center"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={selectedMember.img}
-                alt={selectedMember.name}
-                className="w-32 h-32 mx-auto rounded-full mb-4 object-cover"
-              />
-              <h3 className="text-2xl font-semibold text-gray-800">
-                {selectedMember.name}
-              </h3>
-              <p className="text-gray-600 mb-4">{selectedMember.role}</p>
-              <p className="text-gray-500">{selectedMember.info}</p>
-              <button
-                className="mt-4 px-4 py-2 bg-red-500 text-white rounded-full"
-                onClick={() => setSelectedMember(null)}
-              >
-                Close
-              </button>
-            </motion.div>
+            {selectedMember && (
+              <div className="">
+                <img
+                  src={selectedMember.img}
+                  alt={selectedMember.name}
+                  className="w-32 h-32 mx-auto rounded-full mb-4 object-cover"
+                />
+                <h3 className="text-2xl font-semibold text-gray-800">
+                  Đồng Chí: {selectedMember.name}
+                </h3>
+                <div className="text-left">
+                  <p className="text-gray-500">
+                    Chức vụ: {selectedMember.role}
+                  </p>
+                  <p className="text-gray-500">
+                    Trình độ chuyên môn:{" "}
+                    {selectedMember.specialized_qualifications}
+                  </p>
+                  <p className="text-gray-500">
+                    Liên hệ: {selectedMember.phone_number}
+                  </p>
+                  <p className="text-gray-500">Email:{selectedMember.email}</p>
+                </div>
+                <button
+                  className="mt-4 px-4 py-2 bg-red-500 text-white rounded-full"
+                  onClick={() => setSelectedMember(null)}
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </Dialog>
     </section>
   );
 };

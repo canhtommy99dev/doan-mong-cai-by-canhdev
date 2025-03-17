@@ -3,6 +3,7 @@ import GradientBackground from "./components/GradientBackground";
 import ScrollAnimation from "./components/ScrollAnimation";
 import Feature from "./components/feature";
 import BlogSection from "./components/BlogSection";
+import NewFeature from "./components/NewFeature";
 // import CarouselSider from "./components/carousel";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <GradientBackground />
       <Feature />
       <BlogSection />
+      <NewFeature />
     </div>
   );
 };

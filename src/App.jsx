@@ -5,6 +5,7 @@ import About from "./pages/abouts/About";
 import Events from "./pages/events/Events";
 import Contact from "./pages/contacts/Contacts";
 import Footer from "./components/footer";
+import NotFound from "./pages/not-found/NotFound";
 
 const App = () => {
   const [route, setRoute] = useState(window.location.pathname);
@@ -23,6 +24,7 @@ const App = () => {
       {route === "/about" && <About />}
       {route === "/events" && <Events />}
       {route === "/contact" && <Contact />}
+      {!["/", "/about", "/events", "/contact"].includes(route) && <NotFound />}
       <Footer />
     </div>
   );

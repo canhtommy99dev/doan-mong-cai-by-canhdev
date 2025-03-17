@@ -19,10 +19,14 @@ const Navbar = ({ navigate }) => {
   }, []);
 
   const menuItems = [
-    { name: "Home", path: "/", icon: <Home className="w-5 h-5" /> },
-    { name: "About", path: "/about", icon: <Info className="w-5 h-5" /> },
-    { name: "Events", path: "/events", icon: <Calendar className="w-5 h-5" /> },
-    { name: "Contact", path: "/contact", icon: <Mail className="w-5 h-5" /> },
+    { name: "Trang chủ", path: "/", icon: <Home className="w-5 h-5" /> },
+    { name: "Giới thiệu", path: "/about", icon: <Info className="w-5 h-5" /> },
+    {
+      name: "Sự kiện",
+      path: "/events",
+      icon: <Calendar className="w-5 h-5" />,
+    },
+    { name: "Liên Hệ", path: "/contact", icon: <Mail className="w-5 h-5" /> },
   ];
 
   return (
