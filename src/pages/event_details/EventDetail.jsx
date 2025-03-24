@@ -1,8 +1,17 @@
 import NotFound from "../not-found/NotFound";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const EventDetail = ({ data }) => {
+  const [getData, setGetData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulated loading time
+  }, []);
+
   const dataTest = {
     data: {
       id: 4,
@@ -89,9 +98,17 @@ const EventDetail = ({ data }) => {
     meta: {},
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen  bg-blue-400">
+        <motion.div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin " />
+      </div>
+    );
+  }
+
   return (
     <motion.div
-      className="flex justify-center items-center min-h-screen bg-gray-100 p-6"
+      className="flex justify-center items-center min-h-screen  bg-blue-400 p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -102,13 +119,15 @@ const EventDetail = ({ data }) => {
         animate={{ scale: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
-          {dataTest.data.title}
-        </h2>
-        <p className="text-lg text-gray-600 mb-4">{dataTest.data.subtitle}</p>
-        <p className="text-sm text-gray-500 mb-4">
-          🕒 {new Date(dataTest.data.createdAt).toLocaleDateString()}
-        </p>
+        <div className="text-left">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            {dataTest.data.title}
+          </h2>
+          <p className="text-lg text-gray-600 mb-4">{dataTest.data.subtitle}</p>
+          <p className="text-sm text-gray-500 mb-4">
+            🕒 {new Date(dataTest.data.createdAt).toLocaleDateString()}
+          </p>
+        </div>
         <div className="mt-4 text-left">
           {dataTest.data.contentnews.split("\n").map((line, index) =>
             line.includes("![") ? (
