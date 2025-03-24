@@ -41,7 +41,7 @@ const App = () => {
       {route === "/about" && <About />}
       {route === "/events" && <Events />}
       {route.startsWith("/events_detail/") && params.length > 0 && (
-        <EventDetail eventId={params[0]} />
+        <EventDetail dataId={params[0]} />
       )}
       {route === "/contact" && <Contact />}
       {!["/", "/about", "/events", "/contact"].includes(route) &&

@@ -1,22 +1,32 @@
 export default function Contact() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-screen bg-gray-100 p-4 gap-4">
-      <div className="bg-white p-6 rounded-2xl shadow-lg flex flex-col justify-center items-center">
-        <h2 className="text-2xl font-bold text-center mb-4">Contact Us</h2>
-        <p className="text-center text-gray-600 mb-4">Phone: +1 234 567 890</p>
-        <p className="text-center text-gray-600 mb-6">
-          Location: 123 Main St, City, Country
-        </p>
-      </div>
-
-      <div className="h-full">
-        <iframe
-          className="w-full h-full rounded-lg"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094155!2d144.95565131531567!3d-37.817327979751824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5779f0d68a0b19e!2s123%20Main%20St%2C%20City%2C%20Country!5e0!3m2!1sen!2sus!4v1649284000000!5m2!1sen!2sus"
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+    <div className="min-h-screen w-full bg-blue-400 flex items-center">
+      <div className="mx-auto max-w-2xl lg:max-w-7xl w-full p-6">
+        <h3 className="mt-2 text-4xl font-medium tracking-tighter text-gray-950 sm:text-6xl">
+          Thông tin liên hệ
+        </h3>
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <div className="max-w-lg">
+            <p className="text-sm text-white">
+              Trụ sở: Số 38, đường Hữu Nghị, phường Trần Phú, thành phố Móng Cái
+            </p>
+            <p className="mt-8 text-sm text-white">SĐT & Fax: 02033.886.908</p>
+            <p className="mt-8 text-sm text-white">
+              Email: thanhdoanmongcai@gmail.com
+            </p>
+          </div>
+          <div className="max-lg:order-first max-lg:max-w-lg">
+            <div className="aspect-3/2 overflow-hidden rounded-xl shadow-xl">
+              <iframe
+                title="Google Map Location"
+                className="w-full h-full"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.778218965905!2d107.96323747777987!3d21.5228375930723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314b56af577fb317%3A0x9152fdd8ee7b12f!2zMzggSOG7r3UgTmdo4buLLCBQLiBUcuG6p24gUGjDuiwgTcOzbmcgQ8OhaSwgUXXhuqNuZyBOaW5oLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1742833907879!5m2!1svi!2s"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

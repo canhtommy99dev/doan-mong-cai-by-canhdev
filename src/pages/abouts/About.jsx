@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Dialog,
@@ -63,6 +63,10 @@ const teamMembers = [
 
 const About = () => {
   const [selectedMember, setSelectedMember] = useState(null);
+
+  useEffect(() => {
+    document.title = "Giới thiệu đoàn viên thanh niên Việt Nam";
+  }, []);
 
   return (
     <section className="py-16 bg-blue-300 text-center">

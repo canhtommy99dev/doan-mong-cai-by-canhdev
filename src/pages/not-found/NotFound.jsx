@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import animationData from "../../assets/not-found.json";
 import Lottie from "react-lottie";
 
@@ -10,6 +11,10 @@ export default function NotFound() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
+  useEffect(() => {
+    document.title = "Lỗi trang";
+  }, []);
 
   return (
     <div className="relative isolate flex items-center justify-center h-screen bg-blue-300 px-6">
