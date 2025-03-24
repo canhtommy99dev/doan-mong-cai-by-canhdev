@@ -6,6 +6,10 @@ const getListEvents = () => {
   );
 };
 
+const getItemEvents = (id) => {
+  return instantExportsApis.get(`/list-api-sources/${id}`);
+};
+
 // const getListMoneyWithDraw = () => {
 //   return instantExportsAPIAXIOS.get(`/list_manager_withdraw`);
 // };
@@ -29,6 +33,7 @@ const getListEvents = () => {
 
 export {
   getListEvents,
+  getItemEvents,
   // getListMoneyWithDraw,
   // putAPIChangeMoney,
   // getListPageWithdrawMoney,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/navbar";
 import Home from "./pages/home/Home";
 import About from "./pages/abouts/About";
@@ -16,16 +16,22 @@ const App = () => {
 
   const [route, setRoute] = useState(window.location.pathname);
   const [params, setParams] = useState(getRouteParams(route));
-  window.onpopstate = () => setRoute(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const newPath = window.location.pathname;
+      setRoute(newPath);
+      setParams(getRouteParams(newPath));
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   const navigate = (path) => {
     window.history.pushState({}, "", path);
     setRoute(path);
-  };
-
-  window.onpopstate = () => {
-    setRoute(window.location.pathname);
-    setParams(getRouteParams(window.location.pathname));
+    setParams(getRouteParams(path));
   };
 
   return (
@@ -34,11 +40,12 @@ const App = () => {
       {route === "/" && <Home />}
       {route === "/about" && <About />}
       {route === "/events" && <Events />}
-      {route.startsWith("/events_detail/") && (
+      {route.startsWith("/events_detail/") && params.length > 0 && (
         <EventDetail eventId={params[0]} />
       )}
       {route === "/contact" && <Contact />}
-      {!["/", "/about", "/events", "/contact"].includes(route) && <NotFound />}
+      {!["/", "/about", "/events", "/contact"].includes(route) &&
+        !route.startsWith("/events_detail/") && <NotFound />}
       <Footer />
     </div>
   );
