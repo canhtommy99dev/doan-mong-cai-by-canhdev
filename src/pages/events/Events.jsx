@@ -67,7 +67,7 @@ const Events = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <img
-                    src={`http://localhost:1337${news.url_title.url}`}
+                    src={`${news.url_title.url}`}
                     alt={news.title}
                     className="w-full h-48 object-cover"
                   />
