@@ -40,6 +40,14 @@ const EventDetail = ({ dataId }) => {
     }
   };
 
+  const shareOnFacebook = () => {
+    const url = window.location.href;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}`;
+    window.open(facebookShareUrl, "_blank", "noopener,noreferrer");
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen  bg-blue-400">
@@ -94,6 +102,10 @@ const EventDetail = ({ dataId }) => {
                 🕒 {new Date(getData.data.createdAt).toLocaleDateString()}
               </p>
             </div>
+            <button
+              onClick={shareOnFacebook}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-700"
+            ></button>
             <div className="mt-4 text-left">
               {getData.data.contentnews.split("\n").map((line, index) =>
                 line.includes("![") ? (
