@@ -31,9 +31,9 @@ const Navbar = ({ navigate }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 p-4  flex items-center justify-between transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 p-4 flex items-center justify-between transition-all duration-500 ${
         scrolling
-          ? "bg-blue-600 text-white shadow-md"
+          ? "glass-dark text-white shadow-lg"
           : "bg-transparent text-white"
       }`}
     >
@@ -80,22 +80,36 @@ const Navbar = ({ navigate }) => {
         </Sheet>
 
         {/* Logo & Title */}
-        <img src={logo} alt="Logo" className="w-8 h-8" />
-        <span className="text-lg font-bold">Đoàn Thanh Niên Móng Cái</span>
+        <motion.img
+          src={logo}
+          alt="Logo"
+          className="w-8 h-8 animate-float"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.2 }}
+        />
+        <span className="text-lg font-bold gradient-text">
+          Đoàn Thanh Niên Phường Móng Cái 1
+        </span>
       </div>
 
       {/* Desktop Navbar */}
       <nav className="hidden md:flex space-x-6">
-        {menuItems.map((item) => (
-          <Button
+        {menuItems.map((item, index) => (
+          <motion.div
             key={item.path}
-            variant="ghost"
-            className="flex items-center hover:bg-blue-700"
-            onClick={() => navigate(item.path)}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            {item.icon}
-            <span className="ml-2">{item.name}</span>
-          </Button>
+            <Button
+              variant="ghost"
+              className="flex items-center hover:bg-blue-700/20 glass rounded-lg transition-all duration-300"
+              onClick={() => navigate(item.path)}
+            >
+              {item.icon}
+              <span className="ml-2">{item.name}</span>
+            </Button>
+          </motion.div>
         ))}
       </nav>
     </header>

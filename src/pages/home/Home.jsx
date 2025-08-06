@@ -10,7 +10,7 @@ import NewFeature from "./components/NewFeature";
 const Home = () => {
   useEffect(() => {
     document.title =
-      "Trang thông tin điện tử đoàn thanh niên Thành Phố Móng Cái";
+      "Trang thông tin điện tử đoàn thanh niên Phường Móng Cái 1";
   }, []);
   return (
     <div>

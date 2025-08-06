@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   // baseURL: "https://api-backends.targett-promotion.com/api",
-  baseURL: "https://great-boot-6bbf873e5d.strapiapp.com/api",
+  baseURL: "http://103.57.223.143:1337/api",
 });
 
 instance.interceptors.response.use(

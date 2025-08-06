@@ -12,11 +12,11 @@ export default function GradientBackground() {
     <div className="relative flex items-center justify-center h-screen overflow-hidden">
       {/* Animated Background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 animate-gradient"
+        className="absolute inset-0 animate-gradient"
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         style={{
-          backgroundSize: "200% 200%",
+          backgroundSize: "400% 400%",
         }}
       />
       <div
@@ -27,10 +27,15 @@ export default function GradientBackground() {
           src={logo}
           width={160}
           alt="Logo"
-          className="m-5"
-          initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          className="m-5 animate-float"
+          initial={{ opacity: 0, y: -50, scale: 0.8 }}
+          animate={
+            isInView
+              ? { opacity: 1, y: 0, scale: 1 }
+              : { opacity: 0, y: -50, scale: 0.8 }
+          }
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          whileHover={{ scale: 1.1, rotate: 5 }}
         />
         <div className="text-center md:text-left">
           <motion.h1
@@ -39,7 +44,7 @@ export default function GradientBackground() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            Đoàn Thanh niên - Hội LHTN Việt Nam, Thanh Đoàn Móng Cái
+            Đoàn Thanh niên - Hội LHTN Việt Nam, Phường Móng Cái 1
           </motion.h1>
           <motion.p
             className="text-white mt-4 px-2"

@@ -78,7 +78,7 @@ const blogPosts3 = [
 export default function BlogSection() {
   return (
     <div className="container mx-auto px-6 py-10">
-      <h2 className="text-3xl font-bold text-center mb-6 text-balance  tracking-tight">
+      <h2 className="text-3xl font-bold text-center mb-6 text-balance tracking-tight gradient-text">
         Hoạt động tình nguyện vì cộng đồng
       </h2>
       <div className="grid md:grid-cols-3 gap-6">
@@ -90,9 +90,9 @@ export default function BlogSection() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white shadow-lg rounded-lg overflow-hidden relative"
+            className="bg-white shadow-lg rounded-xl overflow-hidden relative card-hover"
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-t-lg"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-t-xl"></div>
             <div
               className="absolute bottom-0 left-0 right-0 text-white p-4"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)" }}
@@ -115,7 +115,7 @@ export default function BlogSection() {
       </div>
       {/* //// */}
       <br />
-      <h2 className="text-3xl font-bold text-center mb-6">
+      <h2 className="text-3xl font-bold text-center mb-6 gradient-text">
         Phong trào rèn luyện bản thân
       </h2>
       <div className="grid md:grid-cols-3 gap-6">
@@ -147,7 +147,7 @@ export default function BlogSection() {
         ))}
       </div>
       <br />
-      <h2 className="text-3xl font-bold text-center mb-6">
+      <h2 className="text-3xl font-bold text-center mb-6 gradient-text">
         Hoạt động xây dựng, bảo vệ Tổ quốc
       </h2>
       <div className="grid md:grid-cols-3 gap-6">

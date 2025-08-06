@@ -1,18 +1,22 @@
 export default function Contact() {
   return (
-    <div className="min-h-screen w-full bg-blue-400 flex items-center">
+    <div className="min-h-screen w-full animate-gradient flex items-center">
       <div className="mx-auto max-w-2xl lg:max-w-7xl w-full p-6">
-        <h3 className="mt-2 text-4xl font-medium tracking-tighter text-gray-950 sm:text-6xl">
+        <h3 className="mt-2 text-4xl font-medium tracking-tighter text-white sm:text-6xl gradient-text">
           Thông tin liên hệ
         </h3>
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div className="max-w-lg">
-            <p className="text-sm text-white">
-              Trụ sở: Số 38, đường Hữu Nghị, phường Trần Phú, thành phố Móng Cái
+          <div className="max-w-lg glass rounded-xl p-6">
+            <p className="text-sm text-white font-medium">
+              <span className="font-bold">Trụ sở:</span> Số 38, đường Hữu Nghị,
+              phường Trần Phú, phường Móng Cái 1
             </p>
-            <p className="mt-8 text-sm text-white">SĐT & Fax: 02033.886.908</p>
-            <p className="mt-8 text-sm text-white">
-              Email: thanhdoanmongcai@gmail.com
+            <p className="mt-6 text-sm text-white font-medium">
+              <span className="font-bold">SĐT & Fax:</span> 02033.886.908
+            </p>
+            <p className="mt-6 text-sm text-white font-medium">
+              <span className="font-bold">Email:</span>{" "}
+              thanhdoanmongcai@gmail.com
             </p>
           </div>
           <div className="max-lg:order-first max-lg:max-w-lg">

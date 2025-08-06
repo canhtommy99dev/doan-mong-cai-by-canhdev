@@ -108,7 +108,7 @@ const About = () => {
               <div className="lg:pr-4">
                 <div className="lg:max-w-lg  text-left">
                   <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-                    Giới thiệu Thành Đoàn Móng Cái
+                    Giới thiệu Đoàn Thanh Niên Phường Móng Cái 1
                   </h1>
                   <br />
                   <h2 className="text-3xl font-bold text-gray-900">
